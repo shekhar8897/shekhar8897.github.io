@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Porto-folio</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+  <link href="https://fonts.googleapis.com/css?family=Grenze&display=swap" rel="stylesheet">
+
+  <style>
+        
+    .cursor {
+        z-index: 100;
+        width: 30px;
+        height: 30px;
+        border: 2px solid black;
+        border-radius: 50%;
+        position: absolute;
+        transition-duration: 200ms;
+        transition-timing-function: ease-out;
+        animation: cursorAnim .8s infinite alternate;
+        pointer-events: none;
+    }
+
+    .cursor::after {
+        z-index: 100;
+        content: "";
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        opacity: .3;
+        top: -61px;
+        left: -62px;
+        animation: cursorAnim2 .8s infinite alternate;
+    }
+/*  
+@keyframes cursorAnim {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(.7);
+    }
+}
+
+@keyframes cursorAnim2 {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(.4);
+    }
+} */
+
+@keyframes cursorAnim3 {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+} 
+
+.expand {
+    animation: cursorAnim3 .5s forwards;
+    background-color: white;
+} 
+
+
+@media only screen and (max-width: 600px) {
+  *{
+    display: none;
+  
+}
+}
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+
+
+</head>
+<body>
+
+  <app-root></app-root>
+  <div class="cursor"></div>
+  
+  <script>
+    const cursor = document.querySelector('.cursor');
+  
+      document.addEventListener('mousemove', e => {
+        cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
+      })
+
+      document.addEventListener('click', () => {
+        cursor.classList.add("expand");
+
+        setTimeout(() => {
+            cursor.classList.remove("expand");
+        }, 500)
+      })
+   </script>
+
+  <script>
+    $(document).ready(function() {
+
+  $(".panel1-left_side1").hover(function(){
+    $('.panel1').attr("style","transform: matrix3d(1, 0, 0,-0.0001, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)");
+});
+    $(".section1 .panel1 .subpanel1 ").hover(function(){
+         $('.panel1').attr("style","transform: matrix3d(1, 0, 0, 0.0001, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)");
+    });
+    $(".panel1-right_side1").hover(function(){
+         $('.panel1').attr("style","transform: matrix3d(1, 0, 0,0, 0, 1, 0, 0.0001, 0, 0, 1, 0, 0, 0, 0, 1)");
+    });
+    $(".panel2_row1").hover(function(){
+         $('.panel1').attr("style","transform: matrix3d(1, 0, 0,0, 0, 1, 0, -0.0001, 0, 0, 1, 0, 0, 0, 0, 1)");
+    });
+    $(".panel2_row2").hover(function(){
+      $('.panel1').attr("style","transform: matrix3d(1, 0, 0,-0.0001, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)");
+     
+    });
+    $(".panel1-left_side1, .section1 .panel1 .subpanel1, .panel1-right_side1, .panel2_row1").mouseout(function(){
+         $('.panel1').removeAttr("style");
+    });
+    $(" .panel1-right_side1").mouseout(function(){
+         $('.panel1').removeAttr("style");
+    });
+});
+  </script>
+
+  <script>
+      $(document).ready(function() {
+  
+    $(".panel1-left_side1").hover(function(){
+      $('.section2_panel1').attr("style","transform: matrix3d(1, 0, 0,-0.0001, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)");
+  });
+      $(".section2_panel1 .subpanel1 ").hover(function(){
+           $('.section2_panel1').attr("style","transform: matrix3d(1, 0, 0, 0.0001, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)");
+      });
+      $(".panel1-right_side1").hover(function(){
+           $('.section2_panel1').attr("style","transform: matrix3d(1, 0, 0,0, 0, 1, 0, 0.0001, 0, 0, 1, 0, 0, 0, 0, 1)");
+      });
+      $(".panel1-left_side1").mouseout(function(){
+           $('.section2_panel1').removeAttr("style");
+      });
+      $(" .panel1-right_side1,.section2_panel1 .subpanel1").mouseout(function(){
+           $('.section2_panel1').removeAttr("style");
+      });
+  });
+    </script>
+<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="es2015-polyfills.js" nomodule></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
+</html>
